@@ -22,7 +22,7 @@ conversion uses "[...]Kt" file to name java class with exts as static funcs
 
 java does not support default param vals
 * resolve by adding ctor keyword even if only single class ctor
-* precede keyword with @JvmOverloads tag to generate overloads in java calls
+* precede keyword with @JvmOverloads tag to generate defaults in java calls
 
 ### instance methods
 
@@ -31,6 +31,7 @@ conversion renames kotlin get methods to get[Kotlin method name]
 * with @JvmName tag directly before get(), or
 * with @get:JvmName([...]) tag directly before encapsulating property
 * latter can be applied to prop with no explicitly defined getter
+
 the same applies for setter methods; resolve with @set
 
 ### const
