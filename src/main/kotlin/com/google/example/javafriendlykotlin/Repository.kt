@@ -18,16 +18,19 @@ package com.google.example.javafriendlykotlin
 
 import java.io.File
 import java.io.FileNotFoundException
+import java.io.IOException
 
 object Repository {
-    val BACKUP_PATH = "/backup/user.repo"
+    const val BACKUP_PATH = "/backup/user.repo"
 
     private val _users = mutableListOf<User>()
     private var _nextGuestId = 1000
 
+    @JvmStatic
     val users: List<User>
         get() = _users
 
+    @JvmStatic
     val nextGuestId
         get() = _nextGuestId++
 
@@ -38,6 +41,8 @@ object Repository {
         _users.add(User(103, "warlow", groups = listOf("staff", "inactive")))
     }
 
+    @JvmStatic
+    @Throws(IOException::class)
     fun saveAs(path: String?):Boolean {
         val backupPath = path ?: return false
 
@@ -49,6 +54,7 @@ object Repository {
         return true
     }
 
+    @JvmStatic
     fun addUser(user: User) {
         // Ensure the user isn't already in the collection.
         val existingUser = users.find { user.id == it.id }
